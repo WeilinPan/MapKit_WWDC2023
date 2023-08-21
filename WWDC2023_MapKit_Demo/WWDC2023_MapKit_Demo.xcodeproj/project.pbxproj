@@ -11,6 +11,7 @@
 		EFA45BF62A93B7C100EB8620 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA45BF52A93B7C100EB8620 /* ContentView.swift */; };
 		EFA45BF82A93B7C300EB8620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA45BF72A93B7C300EB8620 /* Assets.xcassets */; };
 		EFA45BFB2A93B7C300EB8620 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA45BFA2A93B7C300EB8620 /* Preview Assets.xcassets */; };
+		EFA45C022A93B7E200EB8620 /* BeantownButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA45C012A93B7E200EB8620 /* BeantownButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		EFA45BF52A93B7C100EB8620 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EFA45BF72A93B7C300EB8620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFA45BFA2A93B7C300EB8620 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EFA45C012A93B7E200EB8620 /* BeantownButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeantownButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				EFA45BF32A93B7C100EB8620 /* WWDC2023_MapKit_DemoApp.swift */,
 				EFA45BF52A93B7C100EB8620 /* ContentView.swift */,
+				EFA45C012A93B7E200EB8620 /* BeantownButtons.swift */,
 				EFA45BF72A93B7C300EB8620 /* Assets.xcassets */,
 				EFA45BF92A93B7C300EB8620 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA45BF62A93B7C100EB8620 /* ContentView.swift in Sources */,
+				EFA45C022A93B7E200EB8620 /* BeantownButtons.swift in Sources */,
 				EFA45BF42A93B7C100EB8620 /* WWDC2023_MapKit_DemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
