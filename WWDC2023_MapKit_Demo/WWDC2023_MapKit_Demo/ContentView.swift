@@ -41,17 +41,19 @@ extension CLLocationCoordinate2D {
     static let bridge = CLLocationCoordinate2D(latitude: 42.35413641504186, longitude: -71.06992812384465)
     
     static let ducklings = CLLocationCoordinate2D(latitude: 42.35551758472192, longitude: -71.0697581168929)
+    
+    static let hotpot = CLLocationCoordinate2D(latitude: 25.07655721882271, longitude: 121.38582975457757)
 }
 struct ContentView: View {
     @State private var position: MapCameraPosition = .automatic
     @State private var searchResults: [MKMapItem] = []
     
     var body: some View {
-        marker
+//        marker
 //        annotation
 //        search
 //        customContentMarker
-//        mapCameraPosition
+        mapCameraPosition
     }
 }
 
@@ -131,7 +133,7 @@ extension ContentView {
     
     var mapCameraPosition: some View {
         Map(position: $position) {
-            Annotation("Parking", coordinate: .parking) {
+            Annotation("Parking", coordinate: .parkhing) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(.background)
