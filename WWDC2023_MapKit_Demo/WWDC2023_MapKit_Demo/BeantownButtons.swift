@@ -45,7 +45,20 @@ struct BeantownButtons: View {
             .buttonStyle(.bordered)
             
             Button {
-                position = .region(.northShore)
+//                position = .region(.northShore)
+//                position = .item(MKMapItem(placemark: MKPlacemark(coordinate: .hotpot)))
+//                position = .rect(MKMapRect(origin: MKMapPoint(.hotpot), size: MKMapSize()))
+                position = .camera (
+                    MapCamera (
+                        centerCoordinate: CLLocationCoordinate2D(
+                            latitude: 42.360431,
+                            longitude: -71.055930
+                    ),
+                    distance: 980,
+                    heading: 242,
+                    pitch: 60
+                    )
+                )
             } label: {
                 Label("North Shore", systemImage: "water.waves")
             }

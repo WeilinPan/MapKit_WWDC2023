@@ -133,7 +133,7 @@ extension ContentView {
     
     var mapCameraPosition: some View {
         Map(position: $position) {
-            Annotation("Parking", coordinate: .parkhing) {
+            Annotation("Parking", coordinate: .parking) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(.background)
