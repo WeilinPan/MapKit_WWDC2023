@@ -48,17 +48,21 @@ struct BeantownButtons: View {
 //                position = .region(.northShore)
 //                position = .item(MKMapItem(placemark: MKPlacemark(coordinate: .hotpot)))
 //                position = .rect(MKMapRect(origin: MKMapPoint(.hotpot), size: MKMapSize()))
-                position = .camera (
-                    MapCamera (
-                        centerCoordinate: CLLocationCoordinate2D(
-                            latitude: 42.360431,
-                            longitude: -71.055930
-                    ),
-                    distance: 980,
-                    heading: 242,
-                    pitch: 60
-                    )
-                )
+//                position = .camera (
+//                    MapCamera (
+//                        centerCoordinate: CLLocationCoordinate2D(
+//                            latitude: 42.360431,
+//                            longitude: -71.055930
+//                    ),
+//                        // 地圖中心點到相機的距離，以米為單位。
+//                    distance: 980,
+//                        // 相機相對真北的角度
+//                    heading: 242,
+//                        // 相機角度俯視平面狀態為0
+//                    pitch: 80
+//                    )
+//                )
+                position = .userLocation(fallback: .automatic)
             } label: {
                 Label("North Shore", systemImage: "water.waves")
             }
