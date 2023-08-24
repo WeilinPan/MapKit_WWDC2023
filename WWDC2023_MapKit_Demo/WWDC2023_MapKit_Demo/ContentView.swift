@@ -12,26 +12,26 @@ extension MKCoordinateRegion {
     static let boston = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
             latitude: 42.360256, longitude: -71.057279),
-            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
     
     static let northShore = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
             latitude: 42.547408, longitude: -70.870085),
-            span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
     )
 }
 
 extension CLLocationCoordinate2D {
     
     static let parking = CLLocationCoordinate2D(latitude: 42.354528, longitude: -71.068369)
-
+    
     static let stand_1 = CLLocationCoordinate2D(latitude: 42.354655896697416, longitude: -71.06780684373602)
- 
+    
     static let stand_2 = CLLocationCoordinate2D(latitude: 42.35468513299399, longitude: -71.06772101305162)
-  
+    
     static let stand_3 = CLLocationCoordinate2D(latitude: 42.35459791959453, longitude: -71.06766669832166)
-   
+    
     static let stand_4 = CLLocationCoordinate2D(latitude: 42.35456917878864, longitude: -71.06775319955827)
     
     static let stand_center = CLLocationCoordinate2D(latitude: 42.35462485933613, longitude: -71.06773725770259)
@@ -47,13 +47,17 @@ extension CLLocationCoordinate2D {
 struct ContentView: View {
     @State private var position: MapCameraPosition = .automatic
     @State private var searchResults: [MKMapItem] = []
-    
+    @State private var visibleRegion: MKCoordinateRegion?
+    @State private var selectedResult: MKMapItem?
+    @State private var selectedTag: Double?
+    @State private var route: MKRoute?
     var body: some View {
-//        marker
-//        annotation
-//        search
-//        customContentMarker
-        mapCameraPosition
+        marker
+        //        annotation
+        //        search
+        //        customContentMarker
+        //                mapCameraPosition
+        //        selectedView
     }
 }
 
@@ -80,6 +84,7 @@ extension ContentView {
         }
     }
     
+    /// 搜索
     var search: some View {
         Map {
             Annotation("Parking", coordinate: .parking) {
@@ -95,7 +100,7 @@ extension ContentView {
             .annotationTitles(.hidden)
             
             ForEach(searchResults, id: \.self) { result in
-                    Marker(item: result)
+                Marker(item: result)
             }
         }
         .mapStyle(.standard(elevation: .realistic))
@@ -110,6 +115,7 @@ extension ContentView {
         }
     }
     
+    /// 客製化Marker
     var customContentMarker: some View {
         // Markers with custom content and tint
         Map {
@@ -117,7 +123,7 @@ extension ContentView {
                    coordinate: .parking
             )
             .tint(.mint)
-
+            
             /// 顯示字符，最多三個字
             Marker("Foot Bridge", monogram: "FB",
                    coordinate: .bridge
@@ -131,38 +137,17 @@ extension ContentView {
         }
     }
     
-    var mapCameraPosition: some View {
-        Map(position: $position) {
-            Annotation("Parking", coordinate: .parking) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(.background)
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.secondary, lineWidth: 5)
-                    Image(systemName: "car")
-                        .padding(5)
-                }
-            }
-            .annotationTitles(.hidden)
+    /// 選擇Marker
+    var selectedView: some View {
+        Map(selection: $selectedTag) {
+            Marker(item: MKMapItem(placemark: MKPlacemark(coordinate: .parking)))
+                .tag(1)
             
-            ForEach(searchResults, id: \.self) { result in
-                    Marker(item: result)
-            }
-        }
-        .mapStyle(.standard(elevation: .realistic))
-        .safeAreaInset(edge: .bottom) {
-            HStack {
-                Spacer()
-                BeantownButtons(position: $position, searchResults: $searchResults)
-                    .padding(.top)
-                Spacer()
-            }
-            .background(.thinMaterial)
-        }
-        .onChange(of: searchResults) {
-            position = .automatic
+            Marker("Test", systemImage: "car",coordinate: .stand_center)
+                .tag(2)
         }
     }
+    
 }
 
 #Preview {

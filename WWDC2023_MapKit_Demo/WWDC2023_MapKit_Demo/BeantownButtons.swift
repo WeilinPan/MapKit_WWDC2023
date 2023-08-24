@@ -14,6 +14,8 @@ struct BeantownButtons: View {
     
     @Binding var searchResults: [MKMapItem]
     
+    var visibleRegion: MKCoordinateRegion?
+    
     var body: some View {
         HStack {
             Button {
@@ -45,14 +47,14 @@ struct BeantownButtons: View {
             .buttonStyle(.bordered)
             
             Button {
-//                position = .region(.northShore)
+                position = .region(.northShore)
 //                position = .item(MKMapItem(placemark: MKPlacemark(coordinate: .hotpot)))
 //                position = .rect(MKMapRect(origin: MKMapPoint(.hotpot), size: MKMapSize()))
 //                position = .camera (
 //                    MapCamera (
 //                        centerCoordinate: CLLocationCoordinate2D(
-//                            latitude: 42.360431,
-//                            longitude: -71.055930
+//                            latitude: 25.038295508029563,
+//                            longitude: -121.5691782565983
 //                    ),
 //                        // 地圖中心點到相機的距離，以米為單位。
 //                    distance: 980,
@@ -62,7 +64,7 @@ struct BeantownButtons: View {
 //                    pitch: 80
 //                    )
 //                )
-                position = .userLocation(fallback: .automatic)
+//                position = .userLocation(fallback: .automatic)
             } label: {
                 Label("North Shore", systemImage: "water.waves")
             }
@@ -75,7 +77,7 @@ struct BeantownButtons: View {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         request.resultTypes = .pointOfInterest
-        request.region = MKCoordinateRegion(
+        request.region = visibleRegion ?? MKCoordinateRegion(
             center: .parking,
             span: MKCoordinateSpan(latitudeDelta: 0.0125, longitudeDelta: 0.0125))
         
